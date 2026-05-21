@@ -1,0 +1,221 @@
+/* Prevent border-bottom/underline for logo image links in navbar */
+.navbar a > img.logo,
+.navbar a.logo,
+.navbar a[aria-current="page"] > img.logo {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+/* Prevent border-bottom highlight on logo link */
+#menu-main .logo,
+#menu-main a.logo,
+#menu-main a.logo[aria-current="page"],
+#menu-main a.logo:active,
+#menu-main a.logo:focus,
+#menu-main a.logo:hover {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+/** nav styles **/
+
+/* Mobile styles (default) */
+#header .menu-main-container {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--base-darker);
+  transform: translate(-100%, 0%);
+  padding-top: 5rem;
+  z-index: 1;
+}
+
+#header nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 40px 0px 40px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+#menu-main li {
+
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+#menu-main a {
+
+  color: var(--base-lighter);
+  text-decoration: none;
+  font-family: 'Poppins', Arial, sans-serif;
+  transition: var(--transition-color), var(--transition-transform);
+
+}
+
+#menu-main a:hover {
+  color: var(--base-color-hover);
+  transform: translateX(5px);
+}
+
+.menu-button span {
+  display: block;
+  background-color: var(--base-color);
+  width: 30px;
+  height: 3px;
+  margin: 5px 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.menu-button span.open {
+  background-color: var(--base-lighter);
+}
+
+.menu-button span.open:nth-child(1) {
+  opacity: 0;
+}
+
+.menu-button span.open:nth-child(2) {
+  -webkit-transform: rotate(45deg) translate(1px, 1px);
+  -ms-transform: rotate(45deg) translate(1px, 1px);
+  transform: rotate(45deg) translate(1px, 1px);
+}
+
+.menu-button span.open:nth-child(3) {
+  -webkit-transform: rotate(-45deg) translate(5px, -5px);
+  -ms-transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+.logo path {
+  stroke: var(--base-darker);
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+}
+
+.logo-inner {
+  stroke: var(--base-darker);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* Tablet styles: 48rem - 63.99rem (768px - 1023px) */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .header {
+      padding: 2rem; /* 32px */
+      grid-template-columns: 1fr 1fr;
+  }
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Desktop styles: 64rem (1024px and above) */
+
+
+@media (min-width: 64rem) {
+
+  .logo {
+    width: 150px;
+    height: 150px;
+  }
+
+  #header .menu-main-container {
+    position: relative;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    transform: none;
+    padding-top: 0;
+    z-index: auto;
+  }
+
+  #header nav {
+    position: relative;
+    z-index: auto;
+  }
+
+  .menu-wrapper {
+    padding: 0 2rem;
+  }
+
+  .navbar {
+    position: relative;
+    padding: 1rem 2rem;
+  }
+
+  #menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #menu-main {
+    display: flex;
+    padding-left: 0;
+  }
+
+  #menu-main li {
+    margin-bottom: 0;
+    padding: 0 1rem;
+  }
+
+  #menu-main a {
+    color: var(--base-darker);
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+  }
+
+  #menu-main a:hover {
+    color: var(--base-color);
+    transform: translateY(-2px);
+  }
+
+  #menu-main a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--base-color);
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+
+    #menu-main a[aria-current="page"]::after,
+    #menu-main a[aria-current="page"]:hover::after {
+      display: none !important;
+      width: 0 !important;
+      content: none !important;
+    }
+
+  #menu-main a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+  .menu-button {
+    display: none;
+  }
+}

@@ -1,0 +1,50 @@
+/*----------------------------------
+  Page Styles
+----------------------------------*/
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title, .page-body, .dot, #copyright {
+    margin-bottom: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: none;
+}
+
+#copyright {
+    padding-left: 1rem;
+}
+
+.dot {
+    display: inline-block;
+    transform: translateX(-300px);
+}
+
+.page-title {
+    transform: translateY(100%);
+}
+
+.page-body {
+    transform: translateY(30%);
+}
+
+@media (min-width: 64rem) {
+    /* .page-content {
+        padding: 4rem 0;
+    } */
+    
+    .page-title {
+        font-size: 3rem;
+    }
+
+    #copyright {
+        padding-left: unset;
+    }
+}

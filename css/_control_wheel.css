@@ -1,0 +1,109 @@
+/* WRAPPER */
+
+/* Flex centering for more predictable alignment */
+.control-wheel-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 660px; /* 500px wheel + 80px top + 80px bottom spacing */
+}
+
+.radial-wrap {
+  width: 90vw;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  position: relative;
+}
+
+/* OUTER RING */
+.wheel-ring {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--base-darker);
+  border: 2px solid #fff;
+  position: relative;
+}
+
+.wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/* RADIAL CONTAINER */
+.radial {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+}
+
+/* KEY FIX: anchor everything to center */
+.tool-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+}
+
+/* TOOL */
+.tool {
+  width: 12vw;
+  max-width: 80px;
+  height: 12vw;
+  max-height: 80px;
+  border-radius: 50%;
+  background: var(--base-lighter);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+
+
+:root {
+  --radius: 32vw;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --radius: 200px;
+  }
+}
+
+/* 12 positions (8-item example) */
+.tool-wrap:nth-child(1) { transform: rotate(0deg)   translateY(calc(-1 * var(--radius))); }
+.tool-wrap:nth-child(2) { transform: rotate(45deg)  translateY(calc(-1 * var(--radius))); }
+.tool-wrap:nth-child(3) { transform: rotate(90deg)  translateY(calc(-1 * var(--radius))); }
+.tool-wrap:nth-child(4) { transform: rotate(135deg) translateY(calc(-1 * var(--radius))); }
+.tool-wrap:nth-child(5) { transform: rotate(180deg) translateY(calc(-1 * var(--radius))); }
+.tool-wrap:nth-child(6) { transform: rotate(225deg) translateY(calc(-1 * var(--radius))); }
+.tool-wrap:nth-child(7) { transform: rotate(270deg) translateY(calc(-1 * var(--radius))); }
+.tool-wrap:nth-child(8) { transform: rotate(315deg) translateY(calc(-1 * var(--radius))); }
+
+.reveal-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--base-darker); /* swap per tool later */
+  clip-path: circle(0px at 50% 50%);
+  -webkit-clip-path: circle(0px at 50% 50%);
+  z-index: 999;
+  will-change: clip-path;
+}
+
+.reveal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 2rem;
+}

@@ -1,0 +1,27 @@
+/* Footer styles - sticky footer */
+footer {
+  padding: 1rem;
+  margin-top: auto; /* Push footer to bottom */
+  flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+footer h3 {
+  margin: 0;
+}
+
+#footer-widgets .menu {
+  padding-left: 0;
+}
+#footer-widgets .menu-item {
+  list-style-type: none;
+}
+
+@media (min-width: 64rem) {
+  #copyright{
+    position: fixed;
+    left: 65px;
+    bottom: 50px;
+    transform: rotate(-90deg) translateX(-60px);
+    transform-origin: left bottom;
+  }
+} 

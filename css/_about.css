@@ -1,0 +1,134 @@
+/* Career timeline */
+.career-timeline {
+  position: relative;
+  margin: 3rem 0;
+  padding: 0;
+}
+
+.career-timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #ccc;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.timeline-item {
+  position: relative;
+  width: 45%;
+  margin-bottom: 3rem;
+  z-index: 1;
+  opacity: 0; /* for animation */
+  transform: translateY(var(--offset, 30px)); /* vertical offset for scroll animation */
+}
+
+.career-timeline .timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+  --offset: 30px; /* subtle stagger for odd items */
+}
+
+.career-timeline .timeline-item:nth-child(even) {
+  left: 55%;
+  text-align: left;
+  --offset: 50px; /* slightly larger offset for even items */
+}
+
+.timeline-date {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content {
+  background: #fff;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.career-timeline .timeline-item .timeline-content-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.career-timeline .timeline-item .timeline-content-img svg {
+  max-width: 150px;
+}
+
+.career-timeline .timeline-item .timeline-content-img svg path {
+  fill: var(--base-darker);
+}
+
+/* Mobile layout adjustments */
+@media (max-width: 800px) {
+  .career-timeline::before {
+    left: 8px;
+  }
+
+  .timeline-item,
+  .career-timeline .timeline-item:nth-child(odd),
+  .career-timeline .timeline-item:nth-child(even) {
+    width: 100%;
+    left: 0;
+    text-align: left;
+    --offset: 20px; /* smaller offset for mobile */
+  }
+}
+
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  /* Removed transform to avoid offsetting trigger */
+}
+
+.image-wrapper:nth-child(odd) {
+  --offset: 0px;
+}
+
+.image-wrapper:nth-child(even) {
+  --offset: 40px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--base-darker);
+  pointer-events: none;
+  transform: translateY(0%);
+  transition: none;
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Mobile reset for image grid offsets */
+@media (max-width: 800px) {
+  .image-wrapper:nth-child(even) {
+    --offset: 0px;
+  }
+}

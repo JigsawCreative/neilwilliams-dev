@@ -1,0 +1,78 @@
+/* Base button reset */
+.button {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-normal), var(--transition-transform), border var(--transition-normal), box-shadow var(--transition-normal);
+  vertical-align: text-top;
+}
+
+/* Prevent text decoration and color changes on hover */
+.button:hover {
+  text-decoration: none;
+}
+
+/* Primary */
+.button--primary {
+  background-color: var(--base-color);
+  color: var(--base-lighter);
+}
+
+.button--primary:hover {
+  background-color: var(--base-dark-hover);
+  color: var(--base-lighter);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+/* Secondary */
+.button--secondary {
+  background-color: var(--base-light);
+  color: var(--base-darker)
+}
+
+.button--secondary:hover {
+  background-color: var(--base-darker-hover);
+  color: var(--base-lighter);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+/* Outline */
+.button--outline {
+  background-color: transparent;
+  border: 2px solid #1a73e8;
+  color: #1a73e8;
+}
+
+.button--outline:hover {
+  background-color: var(--base-color-hover);
+  border-color: var(--base-color-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+/* Disabled */
+.button:disabled,
+.button--disabled {
+  background-color: #ccc;
+  color: #777;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Optional: Full width */
+.button--full {
+  display: block;
+  width: 100%;
+}

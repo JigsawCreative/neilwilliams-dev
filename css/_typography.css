@@ -1,0 +1,97 @@
+/* Typography - Professional WordPress Service */
+body {
+  color: var(--base-darker);
+  font-family: var(--font-family-body);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--base-darker);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  transition: var(--transition-color);
+}
+
+a {
+  font-family: var(--font-family-body);
+  color: var(--base-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-color);
+}
+
+a:hover {
+  color: var(--base-color-hover);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Special typography for specific contexts */
+.hero h1 {
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  color: white;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+/* Professional button typography */
+.button {
+  font-family: var(--font-family-body);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Lists */
+ul, ol {
+  font-family: var(--font-family-body);
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Small text */
+small {
+  font-size: 0.9rem;
+  color: inherit;
+  font-weight: 400;
+  font-family: var(--font-family-body);
+}
+
+.dot {
+  color: var(--base-light);
+}
