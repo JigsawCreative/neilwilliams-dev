@@ -68,12 +68,6 @@
     order: unset;
   }
 }
-/* Tablet */
-@media (min-width: 48rem) {
-    .wpcf7-form {
-        width: 32rem;
-    }
-}
 
 /* Desktop */
 @media (min-width: 80rem) { 
