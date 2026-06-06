@@ -1,4 +1,4 @@
-name: Deploy WordPress Theme (SFTP)
+name: Deploy WordPress Theme (FTP)
 
 on:
   push:
@@ -13,20 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
-
-      - name: Deploy via SFTP
-        run: |
-          lftp -u ${{ secrets.SFTP_USER }},${{ secrets.SFTP_PASS }} sftp://${{ secrets.SFTP_HOST }} <<EOF
-          set sftp:auto-confirm yes
-          set ssl:verify-certificate no
-
-          mirror -R \
-            ./ \
-            /home/${{ secrets.SFTP_USER }}/public_html/wp-content/themes/neilwilliams \
-            --delete \
-            --verbose
-
-          bye
-          EOF
+      - name: Deploy theme via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASS }}
+          server-dir: /public_html/wp-content/themes/neilwilliams/
