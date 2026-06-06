@@ -15,6 +15,12 @@
   border-bottom: none !important;
   box-shadow: none !important;
 }
+
+#header {
+  position: relative;
+  z-index: 100;
+}
+
 /** nav styles **/
 
 /* Mobile styles (default) */
@@ -24,8 +30,8 @@
   width: 100%;
   background-color: var(--base-darker);
   transform: translate(-100%, 0%);
-  padding-top: 5rem;
-  z-index: 1;
+  padding-top: 6rem;
+  z-index: 102;
 }
 
 #header nav {
@@ -33,31 +39,44 @@
   left: 0;
   right: 0;
   top: 0;
-  z-index: 1;
+  min-height: 7.5rem;
+  background: var(--base-lighter);
+  z-index: 101;
 }
 
 .navbar {
   position: fixed;
   display: flex;
   justify-content: space-between;
-  padding: 40px 40px 0px 40px;
+  align-items: center;
+  padding: 2rem 2.5rem 0 2.5rem;
   left: 0;
   right: 0;
-  z-index: 2;
-  background: var(--base-lighter);
+  background: transparent;
+  z-index: 103;
+}
+
+.navbar > a,
+.navbar .menu-button {
+  position: relative;
+  z-index: 104;
+}
+
+#menu-main {
+  margin-top: 3rem;
 }
 
 #menu-main li {
-
   list-style: none;
   margin-bottom: 1rem;
+  font-family: var(--font-family-heading);
+
 }
 
 #menu-main a {
 
   color: var(--base-lighter);
   text-decoration: none;
-  font-family: 'Poppins', Arial, sans-serif;
   transition: var(--transition-color), var(--transition-transform);
 
 }
@@ -111,6 +130,15 @@
 
 .logo-inner {
   stroke: var(--base-darker);
+  transition: fill 0.7s ease, stroke 0.7s ease;
+}
+
+.logo.open path, .logo.open .logo-inner {
+  stroke: var(--base-lighter);
+}
+
+.logo.open .logo-inner {
+  fill: var(--base-darker);
 }
 
 @keyframes draw {
@@ -122,19 +150,22 @@
 
 /* Tablet styles: 48rem - 63.99rem (768px - 1023px) */
 @media (min-width: 48rem) and (max-width: 63.99rem) {
+
+  #menu-main li {
+    font-size: 3rem;
+  }
+
   .header {
-      padding: 2rem; /* 32px */
+      padding: 2rem;
       grid-template-columns: 1fr 1fr;
   }
   .logo {
     width: 100px;
-    height: 100px;
+    height: 80px;
   }
 }
 
 /* Desktop styles: 64rem (1024px and above) */
-
-
 @media (min-width: 64rem) {
 
   .logo {
@@ -149,11 +180,13 @@
     background-color: transparent;
     transform: none;
     padding-top: 0;
-    z-index: auto;
   }
 
   #header nav {
     position: relative;
+    min-height: 0;
+    padding-top: 1rem;
+    background: transparent;
     z-index: auto;
   }
 
@@ -164,6 +197,7 @@
   .navbar {
     position: relative;
     padding: 1rem 2rem;
+    z-index: auto;
   }
 
   #menu {
@@ -204,12 +238,12 @@
     transition: width 0.3s ease, left 0.3s ease;
   }
 
-    #menu-main a[aria-current="page"]::after,
-    #menu-main a[aria-current="page"]:hover::after {
-      display: none !important;
-      width: 0 !important;
-      content: none !important;
-    }
+  #menu-main a[aria-current="page"]::after,
+  #menu-main a[aria-current="page"]:hover::after {
+    display: none !important;
+    width: 0 !important;
+    content: none !important;
+  }
 
   #menu-main a:hover::after {
     width: 100%;

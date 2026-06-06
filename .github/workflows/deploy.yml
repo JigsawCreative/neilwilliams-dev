@@ -1,4 +1,4 @@
-name: Deploy WordPress Theme
+name: Deploy WordPress Theme (SFTP)
 
 on:
   push:
@@ -13,15 +13,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Deploy theme via rsync
+      - name: Deploy via SFTP
         run: |
-          rsync -avz --delete \
+          lftp -u ${{ secrets.SFTP_USER }},${{ secrets.SFTP_PASS }} sftp://${{ secrets.SFTP_HOST }} <<EOF
+          set sftp:auto-confirm yes
+          set ssl:verify-certificate no
+
+          mirror -R \
             ./ \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/public_html/wp-content/themes/neilwilliams/
+            /home/${{ secrets.SFTP_USER }}/public_html/wp-content/themes/neilwilliams \
+            --delete \
+            --verbose
+
+          bye
+          EOF

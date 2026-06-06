@@ -92,8 +92,8 @@ a[aria-current="page"]:hover {
 
 main {
   position: relative;
-  padding: 3rem 1rem 1rem 1rem;
-  flex: 1; /* Make main content grow to fill available space */
+  padding: 6rem 1rem 1rem 1rem;
+  flex: 1;
 }
 
 /* transition-mask CSS */

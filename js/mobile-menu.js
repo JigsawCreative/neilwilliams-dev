@@ -4,26 +4,18 @@
 const mobileMenu = () => {
 
     const menuBtn = document.querySelector('.menu-button');
-    const menuEls = menuBtn.querySelectorAll('.menu-span');
+    const menuEls = document.querySelectorAll('.menu-span, .logo');
 
     menuBtn.addEventListener("click", () => {
+        const isOpen = menuEls[0]?.classList.contains('open');
 
-        //activate menu and menu icon animations
-        menuEls.forEach(el => {
-
-            if(el.classList.contains("open")) {
-
-                tl.reverse(); // Reverse the animation
-                el.classList.remove("open");
-
-            } else {
-
-                tl.play(); // Play the animation
-                el.classList.add("open");
-
-            }
-
-        });
+        if (isOpen) {
+            tl.reverse(); // Reverse the animation
+            menuEls.forEach(el => el.classList.remove('open'));
+        } else {
+            tl.play(); // Play the animation
+            menuEls.forEach(el => el.classList.add('open'));
+        }
 
     });
 
