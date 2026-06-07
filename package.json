@@ -10,5 +10,8 @@
   },
   "dependencies": {
     "path": "^0.12.7"
+  },
+  "scripts": {
+    "deploy-db": "./deploy-db.sh"
   }
 }
