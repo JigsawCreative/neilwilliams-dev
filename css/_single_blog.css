@@ -1,0 +1,203 @@
+
+/* Shared layout width */
+.container {
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.post-hero {
+    padding: 60px 0 20px;
+    text-align: center;
+}
+
+.post-title {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Hero image (wider than content) */
+.post-hero-image {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+}
+
+.post-hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.post-content {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin: 60px auto;
+}
+
+/* Images inside content */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+/* Wide / full support */
+.post-content .alignwide {
+    max-width: 1100px;
+    width: 100%;
+    margin: 40px auto;
+}
+
+.post-content .alignfull {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+/* Links (KEEPING VARIABLES SAFE) */
+.post-content a {
+    color: var(--base-lighter);
+    text-decoration: underline;
+}
+
+.post-content a:hover {
+    color: var(--base-light);
+}
+
+/* =========================
+   CTA
+========================= */
+
+.post-cta {
+    background: var(--base-dark);
+    color: var(--base-lighter);
+    padding: 60px 0;
+    text-align: center;
+    margin: 80px 0;
+}
+
+.post-cta p {
+    margin-bottom: 20px;
+}
+
+/* CTA button */
+.post-cta .btn {
+    background: var(--base-light);
+    color: var(--base-dark);
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--base-light);
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.post-cta .btn:hover {
+    background: transparent;
+    color: var(--base-lighter);
+    border-color: var(--base-lighter);
+}
+
+/* =========================
+   RELATED POSTS
+========================= */
+
+.related-posts {
+    margin: 80px auto;
+}
+
+.related-posts h2 {
+    margin-bottom: 20px;
+}
+
+.related-card {
+    display: block;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--base-light);
+    text-decoration: none;
+    color: var(--base-color);
+    transition: 0.2s ease;
+}
+
+.related-card:hover {
+    color: var(--base-light);
+}
+
+/* =========================
+   COMMENTS
+========================= */
+
+.comments {
+    margin: 80px auto;
+}
+
+/* Inputs */
+.comments textarea,
+.comments input[type="text"],
+.comments input[type="email"] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--base-light);
+    background: transparent;
+    color: var(--base-lighter);
+    padding: 0.75rem;
+}
+
+/* Submit button */
+.form-submit #submit {
+    font-family: var(--font-family-body);
+    color: var(--base-lighter);
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 10px;
+    background: var(--base-dark);
+    border: 2px solid var(--base-lighter);
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.form-submit #submit:hover {
+    background: var(--base-light);
+    color: var(--base-dark);
+    border-color: var(--base-light);
+    cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .post-title {
+        font-size: 1.8rem;
+    }
+
+    .post-hero {
+        padding: 40px 0 10px;
+    }
+
+    .post-cta {
+        padding: 40px 0;
+    }
+}
