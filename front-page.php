@@ -15,17 +15,6 @@
                 <?php the_field('approach'); ?>
                 <?php the_field('tech_&_tools'); ?>
                 <?php the_field('writing'); ?>
-            <!-- <div class="control-wheel-flex-center">
-
-                <div class="radial-wrap">
-                    <div class="wheel-ring">
-                        <div class="radial"></div>
-                    </div>
-
-                    <div class="wheel-center">Select</div>
-                    </div>
-                
-                </div> -->
             </div>
         </div>
     </div>

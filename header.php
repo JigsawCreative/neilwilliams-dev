@@ -11,7 +11,7 @@
             <div class="menu-wrapper">
                 <nav id="menu" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
                     <div class="navbar">
-                        <a href="/">
+                        <a href="/" aria-label="Home" class="logo-link" itemprop="url">
                             <svg class="logo" width="576" height="300" viewBox="0 0 576 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g transform="translate(0,-50)">
                                     <g class="ring-outer">
