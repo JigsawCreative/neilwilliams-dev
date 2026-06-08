@@ -10,6 +10,7 @@ const triggerPageAnimations = (container = document) => {
 
   // Animate in page title
   if (container.querySelector('.page-title')) animatePageTitle();
+  if (container.querySelector('.post-meta-data')) animatePostTitle();
   if (container.querySelector('.dot')) animateTitleDot();
   if (container.querySelector('.page-body')) animateBodyText();
   animateCopyright();
@@ -112,6 +113,19 @@ const rotateLogoOnScroll = () => {
  */
 const animatePageTitle = () => {
   gsap.to('.page-title', {
+    y: '0%',
+    opacity: 1,
+    visibility: 'visible',
+    duration: 0.8,
+    ease: 'power2.out'
+  });
+};
+
+/**
+ * Animate post title in from hidden state
+ */
+const animatePostTitle = () => {
+  gsap.to('.post-meta-data', {
     y: '0%',
     opacity: 1,
     visibility: 'visible',

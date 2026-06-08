@@ -3,12 +3,12 @@
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
     <!-- HERO -->
-    <header class="post-hero">
+    <header class="post-hero blog-container">
 
-        <div class="container">
+        <div class="post-meta-data">
 
             <h1 class="post-title"><?php the_title(); ?></h1>
-
+    
             <div class="post-meta">
                 <span><?php echo get_the_date(); ?></span>
                 <span>•</span>
@@ -25,51 +25,56 @@
 
     </header>
 
-    <!-- CONTENT -->
-    <article class="post-content container">
+    <div class="page-body">
 
-        <?php the_content(); ?>
-
-    </article>
-
-    <!-- MID CTA / INFO STRIP -->
-    <section class="post-cta">
-        <div class="container">
-            <p>Interested in something similar? Get in touch for bespoke options.</p>
-            <a href="/contact" class="btn">Contact Us</a>
-        </div>
-    </section>
-
-    <!-- RELATED POSTS -->
-    <section class="related-posts container">
-        <h2>Related Posts</h2>
-
-        <?php
-        $related = new WP_Query([
-            'posts_per_page' => 3,
-            'post__not_in' => [get_the_ID()]
-        ]);
-
-        if ($related->have_posts()) :
-            while ($related->have_posts()) : $related->the_post(); ?>
-                
-                <a class="related-card" href="<?php the_permalink(); ?>">
-                    <?php the_title(); ?>
-                </a>
-
-            <?php endwhile;
-            wp_reset_postdata();
-        endif;
-        ?>
-
-    </section>
-
-    <!-- COMMENTS -->
-    <?php if ( comments_open() ) : ?>
-        <section class="comments container">
-            <?php comments_template(); ?>
+        <!-- CONTENT -->
+        <article class="post-content blog-container">
+    
+            <?php the_content(); ?>
+    
+        </article>
+    
+        <!-- MID CTA / INFO STRIP -->
+        <section class="post-cta">
+            <div>
+                <p>Something in the post triggered a thought? Let's talk about it.</p>
+                <a href="/contact" class="btn">Get In Touch</a>
+            </div>
         </section>
-    <?php endif; ?>
+    
+        <!-- RELATED POSTS -->
+        <section class="related-posts blog-container">
+            <h2>Related Posts</h2>
+    
+            <?php
+            $related = new WP_Query([
+                'posts_per_page' => 3,
+                'post__not_in' => [get_the_ID()]
+            ]);
+    
+            if ($related->have_posts()) :
+                while ($related->have_posts()) : $related->the_post(); ?>
+                    
+                    <a class="related-card" href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+    
+                <?php endwhile;
+                wp_reset_postdata();
+            endif;
+            ?>
+    
+        </section>
+    
+        <!-- COMMENTS -->
+        <?php if ( comments_open() ) : ?>
+            <section class="comments blog-container">
+                <?php comments_template(); ?>
+            </section>
+        <?php endif; ?>
+
+    </div>
+
 
 <?php endwhile; endif; ?>
 

@@ -47,6 +47,10 @@
     cursor: pointer;
 }
 
+.hidden-fields-container {
+    display: none;
+}
+
 /** Grid layout **/
 .contact-page-content {
   display: grid;

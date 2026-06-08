@@ -93,6 +93,9 @@ const barbaInit = () => {
         // Move the mask offscreen to reveal new content
         async enter(data) {
 
+            // Scroll to top on new page load (after mask has covered the page)
+            window.scrollTo(0, 0);
+
             // Update navigation highlight for new page immediately
             updateNavHighlight();
 
