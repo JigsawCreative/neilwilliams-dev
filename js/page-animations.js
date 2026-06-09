@@ -19,8 +19,9 @@ const triggerPageAnimations = (container = document) => {
   // if (container.querySelector('.career-timeline')) animateTimeline(container);
 
   // Image reveal animations
-  if (container.querySelector('.image-wrapper')) imageReveal(container);
+  //if (container.querySelector('.image-wrapper')) imageReveal(container);
   if (container.querySelector('.radial-wrap')) animateControlWheel(container);
+  if (container.querySelector('.travel-images')) animateTravelImages(container);
 
   // Animate blog cards on writing page
   if(container.querySelector('.blog_card-article')) animateBlogCards(container);
@@ -68,45 +69,45 @@ const animateLogo = () => {
 
 };
 
-const rotateLogoOnScroll = () => {
+// const rotateLogoOnScroll = () => {
 
-  gsap.registerPlugin(ScrollTrigger);
+//   gsap.registerPlugin(ScrollTrigger);
 
-  const centerX = 288;
-  const centerY = 280.5;
+//   const centerX = 288;
+//   const centerY = 280.5;
 
-  const rings = [
-    { el: ".ring-outer", speed: 0.3 },
-    { el: ".ring-mid-outer", speed: 0.5 },
-    { el: ".ring-mid-inner", speed: 0.8 },
-    { el: ".ring-inner", speed: 1.2 }
-  ];
+//   const rings = [
+//     { el: ".ring-outer", speed: 0.3 },
+//     { el: ".ring-mid-outer", speed: 0.5 },
+//     { el: ".ring-mid-inner", speed: 0.8 },
+//     { el: ".ring-inner", speed: 1.2 }
+//   ];
 
-  rings.forEach(ring => {
+//   rings.forEach(ring => {
 
-    const el = document.querySelector(ring.el);
+//     const el = document.querySelector(ring.el);
 
-    if (!el) return;
+//     if (!el) return;
 
-    gsap.set(el, {
-      transformBox: "fill-box",
-      transformOrigin: "center center"
-    });
+//     gsap.set(el, {
+//       transformBox: "fill-box",
+//       transformOrigin: "center center"
+//     });
 
-    gsap.to(el, {
-      rotation: 360,
-      ease: "none",
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: ring.speed
-      }
-    });
+//     gsap.to(el, {
+//       rotation: 360,
+//       ease: "none",
+//       scrollTrigger: {
+//         trigger: document.body,
+//         start: "top top",
+//         end: "bottom bottom",
+//         scrub: ring.speed
+//       }
+//     });
 
-  });
+//   });
 
-};
+// };
 
 /**
  * Animate page title in from hidden state
@@ -255,5 +256,43 @@ const animateBlogCards = (container = document) => {
       duration: 0.7,
       ease: 'power2.out',
       stagger: 0.12
+  });
+};
+
+const animateTravelImages = (container = document) => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  requestAnimationFrame(() => {
+
+    const images = gsap.utils.toArray(
+      container.querySelectorAll(".travel-image")
+    );
+
+    gsap.set(images, {
+      x: 0,
+      y: 0,
+      rotation: 0,
+      scale: 0.9
+    });
+
+    gsap.to(images, {
+      x: (i, el) => parseFloat(el.dataset.x),
+      y: (i, el) => parseFloat(el.dataset.y),
+      rotation: (i, el) => parseFloat(el.dataset.r),
+      scale: 1,
+      ease: "none",
+      stagger: 0.05,
+
+      scrollTrigger: {
+        trigger: container.querySelector(".travel-section"),
+        start: "top 100%",
+        end: "top 60%",
+        scrub: 0.7,
+        markers: true
+      }
+    });
+
+    ScrollTrigger.refresh(true);
+
   });
 };

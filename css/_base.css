@@ -4,23 +4,28 @@ body.is-loading > *:not(.transition-mask) {
 }
 
 /** Set body background colours **/
-
 body {
-  /* Default neutral background to prevent flash */
   background: var(--base-lighter);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 20px;
+
+  display: block;
+
+  min-height: 100%;
   margin: 0;
+  padding: 20px;
+
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   line-height: 1.6;
 }
 
+html,
+body {
+  height: auto;
+  min-height: 100%;
+}
+
 /** Create persistent border around content that stays during transition and avoids layout shift */
 
-/** Ensure border elements are positioned items **/
 body:before {
   top: 0;
 }
@@ -34,7 +39,7 @@ html:before {
 }
 
 html:after {
-  right: 0
+  right: 0;
 }
 
 html:after, html:before {
@@ -69,7 +74,6 @@ a {
 
 /* Universal highlight for current page link using base color variable */
 a[aria-current="page"] {
-  /* color: var(--base-color) !important; */
   border-bottom: 2px solid var(--base-color);
 }
 
@@ -83,7 +87,6 @@ a[aria-current="page"]:hover {
   text-decoration-color: initial !important;
 }
 
-/* Make barba-container a flex container to enable sticky footer */
 .barba-container {
   display: flex;
   flex-direction: column;

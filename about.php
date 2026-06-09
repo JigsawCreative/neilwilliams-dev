@@ -51,21 +51,29 @@
                 <?php endif; ?>
                 <?php the_field('freddie'); ?>
                 <h2>Travel</h2>
-                <div class="image-grid">
-                    <div class="image-wrapper">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Image 1">
-                        <div class="mask"></div>
+                <section class="travel-section">
+                    <h2>Our favourite places</h2>
+                    <div class="travel-images">
+                        <div class="travel-image" data-x="-250" data-y="-120" data-r="-12">
+                            <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Image 1">
+                        </div>
+                        <div class="travel-image" data-x="280" data-y="-80" data-r="10">
+                            <img src="/wp-content/themes/neilwilliams/temp/sorrento.jpeg" alt="Image 2">
+                        </div>
+                        <div class="travel-image" data-x="-180" data-y="200" data-r="-8">
+                            <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Image 3">
+                        </div>
+                        <div class="travel-image" data-x="220" data-y="180" data-r="14">
+                            <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Image 4">
+                        </div>
+                        <div class="travel-image" data-x="0" data-y="-220" data-r="3">
+                            <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Image 5">
+                        </div>
                     </div>
-                    <div class="image-wrapper">
-                        <img src="/wp-content/themes/neilwilliams/temp/sorrento.jpeg" alt="Image 2">
-                        <div class="mask"></div>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Image 3">
-                        <div class="mask"></div>
-                    </div>
-                </div>
+                    <div class="travel-plane">Plane SVG to go here</div>
+                </section>
                 <?php the_field('travel'); ?>
+            </div>
             </div>
         </div>
     </div>

@@ -84,9 +84,9 @@ const barbaInit = () => {
           data.current.container.remove();
 
           // Clear any existing ScrollTriggers to prevent conflicts with new page's triggers
-          if (window.ScrollTrigger) {
-            window.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-          }
+          // if (window.ScrollTrigger) {
+          //   window.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+          // }
           
         },
 
@@ -108,6 +108,11 @@ const barbaInit = () => {
             
             // Animate in page title
             triggerPageAnimations(data.next?.container);
+
+            // Refresh ScrollTrigger after new content is revealed to ensure triggers are correctly positioned
+            requestAnimationFrame(() => {
+              ScrollTrigger.refresh(true);
+            });
             
             // Reset mask to starting position (offscreen left)
             gsap.set('.transition-mask', { x: '-100%' });
