@@ -256,36 +256,3 @@ function nw_conditional_cf7_assets() {
     wp_dequeue_style( 'contact-form-7' );
     wp_dequeue_style( 'contact-form-7-rtl' );
 }
-
-// Inline SVG safely from theme folder
-function inline_svg($filename, $classes = '', $echo = true) {
-    
-    $upload_dir = wp_get_upload_dir(); // gets array with 'basedir' and 'baseurl'
-
-    $file_path = $upload_dir['basedir'] . '/' . $filename; // full filesystem path
-
-    if (!file_exists($file_path)) {
-        return '';
-    }
-
-    $svg = file_get_contents($file_path);
-
-    // Add classes to the root <svg> element if provided
-    if ($classes) {
-        // Add class attribute to <svg ...> (preserve existing attributes)
-        $svg = preg_replace(
-            '/<svg(\s+[^>]*)?>/i',
-            '<svg$1 class="' . esc_attr($classes) . '">',
-            $svg,
-            1
-        );
-    }
-
-    // Optional: strip scripts or sanitize if not using Safe SVG plugin
-
-    if ($echo) {
-        echo $svg;
-    } else {
-        return $svg;
-    }
-}

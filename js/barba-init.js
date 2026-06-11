@@ -80,13 +80,13 @@ const barbaInit = () => {
           // Reset logo while hidden (prevents flicker)
           resetLogo();
 
+          // Remove old ScrollTriggers to prevent conflicts with new page's triggers
+          ScrollTrigger.getAll().forEach(trigger => {
+              trigger.kill();
+          });
+
           // Safely remove old page container
           data.current.container.remove();
-
-          // Clear any existing ScrollTriggers to prevent conflicts with new page's triggers
-          // if (window.ScrollTrigger) {
-          //   window.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-          // }
           
         },
 

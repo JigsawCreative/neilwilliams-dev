@@ -5,7 +5,8 @@
  */
 
 const triggerPageAnimations = (container = document) => {
-  // Animate logo (persistent global element)
+  
+  // Animate logo
   animateLogo();
 
   // Animate in page title
@@ -13,18 +14,18 @@ const triggerPageAnimations = (container = document) => {
   if (container.querySelector('.post-meta-data')) animatePostTitle();
   if (container.querySelector('.dot')) animateTitleDot();
   if (container.querySelector('.page-body')) animateBodyText();
+
+  // Animate copyright text
   animateCopyright();
 
-  // Timeline (if present)
-  // if (container.querySelector('.career-timeline')) animateTimeline(container);
-
   // Image reveal animations
-  //if (container.querySelector('.image-wrapper')) imageReveal(container);
-  if (container.querySelector('.radial-wrap')) animateControlWheel(container);
   if (container.querySelector('.travel-images')) animateTravelImages(container);
 
-  // Animate blog cards on writing page
-  if(container.querySelector('.blog_card-article')) animateBlogCards(container);
+  // Animate blog listings on writing page
+  if(container.querySelector('.blog-listing')) animateBlogListings(container);
+
+  // Animate tech icons on home page
+  if(container.querySelector('.tech-icons')) animateTechIcons(container);
 };
 
 
@@ -166,6 +167,17 @@ const animateBodyText = () => {
 };
 
 
+const animateBlogListings = () => {
+  gsap.set('.blog-listing', {opacity: 0, y: 40});
+  gsap.to('.blog-listing', {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.12
+  });
+};
+
 /**
  * Animate copyright text
  * (persistent global element outside Barba container)
@@ -190,84 +202,56 @@ const animateCopyright = () => {
 
 };
 
+/**
+ * Animate image reveal on scroll
+ * @param {HTMLElement} container 
+ */
+// const imageReveal = (container = document) => {
+
+//   gsap.registerPlugin(ScrollTrigger);
+
+//   gsap.utils.toArray('.image-wrapper', container).forEach((wrapper, i) => {
+
+//     const mask = wrapper.querySelector('.mask');
+//     const img = wrapper.querySelector('img');
+
+//     gsap.set(mask, { yPercent: 0, opacity: 1 });
+
+//     gsap.to(mask, {
+//       yPercent: 100,
+//       opacity: 1,
+//       duration: 0.6,
+//       ease: 'power2.out',
+//       scrollTrigger: {
+//         trigger: img,
+//         start: "top 100%",
+//         end: "top 60%",
+//         toggleActions: 'play none none none',
+//         markers: true,
+//         once: true
+//       }
+//     });
+//   });
+// };
 
 /**
- * Animate timeline items on scroll
+ * Animate travel images on scroll
+ * @param {HTMLElement} container 
  */
-const animateTimeline = (container = document) => {
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.utils.toArray('.career-timeline .timeline-item', container).forEach((item, i) => {
-    gsap.fromTo(item,
-      {
-        y: parseInt(getComputedStyle(item).getPropertyValue('--offset')),
-        opacity: 0
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: item,
-          start: 'top bottom',
-          toggleActions: 'play none none none',
-          // markers: true,
-          once: true
-        },
-        delay: i * 0.1
-      }
-    );
-  });
-
-};
-
-/**
- * Image reveal animation
- */
-const imageReveal = (container = document) => {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray('.image-wrapper', container).forEach((wrapper, i) => {
-    const mask = wrapper.querySelector('.mask');
-    const img = wrapper.querySelector('img');
-    gsap.set(mask, { yPercent: 0, opacity: 1 });
-    gsap.to(mask, {
-      yPercent: 100,
-      opacity: 1,
-      duration: 0.6,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: img,
-        start: 'top bottom',
-        toggleActions: 'play none none none',
-        markers: true,
-        once: true
-      }
-    });
-  });
-};
-
-const animateBlogCards = (container = document) => {
-  gsap.set('.blog_card-article', {opacity: 0, y: 40});
-  gsap.to('.blog_card-article', {
-      opacity: 1,
-      y: 0,
-      duration: 0.7,
-      ease: 'power2.out',
-      stagger: 0.12
-  });
-};
-
 const animateTravelImages = (container = document) => {
+
+  // Register ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
+  // Set initial state of images based on data attributes
   requestAnimationFrame(() => {
 
+    // Select all images within the travel section and set their initial state
     const images = gsap.utils.toArray(
       container.querySelectorAll(".travel-image")
     );
 
+    // Reset any existing tweens on these images to prevent stacking in SPA transitions
     gsap.set(images, {
       x: 0,
       y: 0,
@@ -275,6 +259,7 @@ const animateTravelImages = (container = document) => {
       scale: 0.9
     });
 
+    // Animate images based on their data attributes as the user scrolls
     gsap.to(images, {
       x: (i, el) => parseFloat(el.dataset.x),
       y: (i, el) => parseFloat(el.dataset.y),
@@ -283,6 +268,7 @@ const animateTravelImages = (container = document) => {
       ease: "none",
       stagger: 0.05,
 
+      // Configure ScrollTrigger for each image
       scrollTrigger: {
         trigger: container.querySelector(".travel-section"),
         start: "top 100%",
@@ -292,6 +278,42 @@ const animateTravelImages = (container = document) => {
       }
     });
 
+    // Refresh ScrollTrigger to ensure it calculates positions based on the new page content
+    ScrollTrigger.refresh(true);
+
+  });
+};
+
+const animateTechIcons = (container = document) => {
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Set initial state of images based on data attributes
+  requestAnimationFrame(() => {
+
+    // Select all tech icons and set their initial state
+    gsap.set('.tech-icons img', {opacity: 0, y: 40});
+
+    // Animate icons as the user scrolls
+    gsap.to('.tech-icons img', {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.2,
+
+      // Configure ScrollTrigger tech icons section
+      scrollTrigger: {
+        trigger: container.querySelector(".tech-icons"),
+        start: "top 100%",
+        end: "top 60%",
+        scrub: 0.7,
+        markers: true
+      }
+    });
+
+    // Refresh ScrollTrigger to ensure it calculates positions based on the new page content
     ScrollTrigger.refresh(true);
 
   });

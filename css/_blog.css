@@ -3,6 +3,7 @@
     gap: 6rem;
     padding: 3rem;
     border-bottom: 1px solid var(--base-color);
+    opacity: 0;
 }
 
 @media (max-width: 48rem) {
