@@ -176,10 +176,23 @@ const animateTravelImages = (container = document) => {
       container.querySelectorAll('.image-gallery, .travel-images')
     );
 
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
     galleries.forEach((gallery) => {
       const images = gallery.querySelectorAll('img');
 
       if (!images.length) return;
+
+      if (isMobile) {
+        gsap.killTweensOf(images);
+        gsap.set(images, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          clearProps: 'transform'
+        });
+        return;
+      }
 
       // Reset any existing tweens on these images to prevent stacking in SPA transitions.
       gsap.killTweensOf(images);

@@ -26,6 +26,7 @@
                         <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 4">
                         <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 5">
                     </div>
+                    <p class="gallery-scroll-hint" aria-hidden="true">Swipe for more<span>→</span></p>
                 </section>
                 <?php the_field('freddie'); ?>
                 <section class="image-gallery-section travel-section">
@@ -37,6 +38,7 @@
                         <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 4">
                         <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 5">
                     </div>
+                    <p class="gallery-scroll-hint" aria-hidden="true">Swipe for more<span>→</span></p>
                 </section>
                 <?php the_field('travel'); ?>
             </div>
