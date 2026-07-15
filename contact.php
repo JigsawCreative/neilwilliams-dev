@@ -20,7 +20,7 @@
                 <div class="contact-page-content">
                     <div class="contact-text">
                         <?php the_field('contact_text'); ?>
-                        <p>Or contact me on <a href="https://www.linkedin.com/in/neilwilliamsdev" target="_blank">LinkedIn</a>.</p>
+                        <p>You can also find me on <a href="https://www.linkedin.com/in/neilwilliamsdev" target="_blank">LinkedIn</a>.</p>
                     </div>
                     <div class="contact-form"><?php echo do_shortcode('[contact-form-7 id="c649ebb" title="Get In Touch"]'); ?></div>
                 </div>

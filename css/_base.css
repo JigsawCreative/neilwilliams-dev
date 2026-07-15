@@ -118,3 +118,15 @@ main {
     padding: 0rem 3rem 1rem 3rem;
   }
 }
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.technologies img {
+  max-width: 4rem;
+  height: auto;
+}

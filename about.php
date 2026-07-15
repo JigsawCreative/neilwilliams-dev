@@ -17,28 +17,26 @@
             </header>
             <div class="page-body">
                 <?php the_field('introduction'); ?>
-                <?php the_field('freddie'); ?>
-                <h2>Travel</h2>
-                <section class="travel-section">
-                    <h2>Our favourite places</h2>
-                    <div class="travel-images">
-                        <div class="travel-image" data-x="-250" data-y="-120" data-r="-12">
-                            <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Image 1">
-                        </div>
-                        <div class="travel-image" data-x="280" data-y="-80" data-r="10">
-                            <img src="/wp-content/themes/neilwilliams/temp/sorrento.jpeg" alt="Image 2">
-                        </div>
-                        <div class="travel-image" data-x="-180" data-y="200" data-r="-8">
-                            <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Image 3">
-                        </div>
-                        <div class="travel-image" data-x="220" data-y="180" data-r="14">
-                            <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Image 4">
-                        </div>
-                        <div class="travel-image" data-x="0" data-y="-220" data-r="3">
-                            <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Image 5">
-                        </div>
+                <section class="image-gallery-section travel-section">
+                    <h2>Freddie</h2>
+                    <div class="image-gallery travel-images">
+                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 1">
+                        <img src="/wp-content/themes/neilwilliams/temp/sorrento.jpeg" alt="Gallery image 2">
+                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 3">
+                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 4">
+                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 5">
                     </div>
-                    <div class="travel-plane">Plane SVG to go here</div>
+                </section>
+                <?php the_field('freddie'); ?>
+                <section class="image-gallery-section travel-section">
+                    <h2>Travel</h2>
+                    <div class="image-gallery travel-images">
+                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 1">
+                        <img src="/wp-content/themes/neilwilliams/temp/sorrento.jpeg" alt="Gallery image 2">
+                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 3">
+                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 4">
+                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 5">
+                    </div>
                 </section>
                 <?php the_field('travel'); ?>
             </div>

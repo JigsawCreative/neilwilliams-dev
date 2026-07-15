@@ -19,13 +19,13 @@ const triggerPageAnimations = (container = document) => {
   animateCopyright();
 
   // Image reveal animations
-  if (container.querySelector('.travel-images')) animateTravelImages(container);
+  if (container.querySelector('.image-gallery, .travel-images')) animateTravelImages(container);
 
   // Animate blog listings on writing page
   if(container.querySelector('.blog-listing')) animateBlogListings(container);
 
   // Animate tech icons on home page
-  if(container.querySelector('.tech-icons')) animateTechIcons(container);
+  if (container.querySelector('.technologies, .technolgies, .tech-icons')) animateTechIcons(container);
 };
 
 
@@ -69,46 +69,6 @@ const animateLogo = () => {
   });
 
 };
-
-// const rotateLogoOnScroll = () => {
-
-//   gsap.registerPlugin(ScrollTrigger);
-
-//   const centerX = 288;
-//   const centerY = 280.5;
-
-//   const rings = [
-//     { el: ".ring-outer", speed: 0.3 },
-//     { el: ".ring-mid-outer", speed: 0.5 },
-//     { el: ".ring-mid-inner", speed: 0.8 },
-//     { el: ".ring-inner", speed: 1.2 }
-//   ];
-
-//   rings.forEach(ring => {
-
-//     const el = document.querySelector(ring.el);
-
-//     if (!el) return;
-
-//     gsap.set(el, {
-//       transformBox: "fill-box",
-//       transformOrigin: "center center"
-//     });
-
-//     gsap.to(el, {
-//       rotation: 360,
-//       ease: "none",
-//       scrollTrigger: {
-//         trigger: document.body,
-//         start: "top top",
-//         end: "bottom bottom",
-//         scrub: ring.speed
-//       }
-//     });
-
-//   });
-
-// };
 
 /**
  * Animate page title in from hidden state
@@ -203,38 +163,6 @@ const animateCopyright = () => {
 };
 
 /**
- * Animate image reveal on scroll
- * @param {HTMLElement} container 
- */
-// const imageReveal = (container = document) => {
-
-//   gsap.registerPlugin(ScrollTrigger);
-
-//   gsap.utils.toArray('.image-wrapper', container).forEach((wrapper, i) => {
-
-//     const mask = wrapper.querySelector('.mask');
-//     const img = wrapper.querySelector('img');
-
-//     gsap.set(mask, { yPercent: 0, opacity: 1 });
-
-//     gsap.to(mask, {
-//       yPercent: 100,
-//       opacity: 1,
-//       duration: 0.6,
-//       ease: 'power2.out',
-//       scrollTrigger: {
-//         trigger: img,
-//         start: "top 100%",
-//         end: "top 60%",
-//         toggleActions: 'play none none none',
-//         markers: true,
-//         once: true
-//       }
-//     });
-//   });
-// };
-
-/**
  * Animate travel images on scroll
  * @param {HTMLElement} container 
  */
@@ -243,39 +171,41 @@ const animateTravelImages = (container = document) => {
   // Register ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
-  // Set initial state of images based on data attributes
   requestAnimationFrame(() => {
-
-    // Select all images within the travel section and set their initial state
-    const images = gsap.utils.toArray(
-      container.querySelectorAll(".travel-image")
+    const galleries = gsap.utils.toArray(
+      container.querySelectorAll('.image-gallery, .travel-images')
     );
 
-    // Reset any existing tweens on these images to prevent stacking in SPA transitions
-    gsap.set(images, {
-      x: 0,
-      y: 0,
-      rotation: 0,
-      scale: 0.9
-    });
+    galleries.forEach((gallery) => {
+      const images = gallery.querySelectorAll('img');
 
-    // Animate images based on their data attributes as the user scrolls
-    gsap.to(images, {
-      x: (i, el) => parseFloat(el.dataset.x),
-      y: (i, el) => parseFloat(el.dataset.y),
-      rotation: (i, el) => parseFloat(el.dataset.r),
-      scale: 1,
-      ease: "none",
-      stagger: 0.05,
+      if (!images.length) return;
 
-      // Configure ScrollTrigger for each image
-      scrollTrigger: {
-        trigger: container.querySelector(".travel-section"),
-        start: "top 100%",
-        end: "top 60%",
-        scrub: 0.7,
-        markers: true
-      }
+      // Reset any existing tweens on these images to prevent stacking in SPA transitions.
+      gsap.killTweensOf(images);
+      gsap.set(images, {
+        y: 28,
+        opacity: 0,
+        scale: 0.985
+      });
+
+      // Stagger in images with a subtle upward reveal as the section enters view.
+      gsap.to(images, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.75,
+        ease: 'power2.out',
+        stagger: 0.14,
+
+        // Configure ScrollTrigger for each gallery row.
+        scrollTrigger: {
+          trigger: gallery,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+          markers: false
+        }
+      });
     });
 
     // Refresh ScrollTrigger to ensure it calculates positions based on the new page content
@@ -289,28 +219,33 @@ const animateTechIcons = (container = document) => {
   // Register ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
-  // Set initial state of images based on data attributes
   requestAnimationFrame(() => {
+    const iconGroups = gsap.utils.toArray(
+      container.querySelectorAll('.technologies')
+    );
 
-    // Select all tech icons and set their initial state
-    gsap.set('.tech-icons img', {opacity: 0, y: 40});
+    iconGroups.forEach((group) => {
+      const icons = group.querySelectorAll('img');
 
-    // Animate icons as the user scrolls
-    gsap.to('.tech-icons img', {
-      opacity: 1,
-      y: 0,
-      duration: 0.7,
-      ease: 'power2.out',
-      stagger: 0.2,
+      if (!icons.length) return;
 
-      // Configure ScrollTrigger tech icons section
-      scrollTrigger: {
-        trigger: container.querySelector(".tech-icons"),
-        start: "top 100%",
-        end: "top 60%",
-        scrub: 0.7,
-        markers: true
-      }
+      // Reset state so repeated SPA transitions don't stack animations.
+      gsap.killTweensOf(icons);
+      gsap.set(icons, { opacity: 0, y: 30 });
+
+      gsap.to(icons, {
+        opacity: 1,
+        y: 0,
+        duration: 0.75,
+        ease: 'back.out(1.3)',
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: group,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+          markers: true
+        }
+      });
     });
 
     // Refresh ScrollTrigger to ensure it calculates positions based on the new page content
