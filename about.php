@@ -20,11 +20,7 @@
                 <section class="image-gallery-section travel-section">
                     <h2>Freddie</h2>
                     <div class="image-gallery travel-images">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 1">
-                        <img src="/wp-content/themes/neilwilliams/temp/sorrento.jpeg" alt="Gallery image 2">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 3">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 4">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 5">
+                        <?php nw_the_media('hero'); ?>
                     </div>
                     <p class="gallery-scroll-hint" aria-hidden="true">Swipe for more<span>→</span></p>
                 </section>
@@ -32,11 +28,7 @@
                 <section class="image-gallery-section travel-section">
                     <h2>Travel</h2>
                     <div class="image-gallery travel-images">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 1">
-                        <img src="/wp-content/themes/neilwilliams/temp/sorrento.jpeg" alt="Gallery image 2">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 3">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred.jpeg" alt="Gallery image 4">
-                        <img src="/wp-content/themes/neilwilliams/temp/fred2.jpeg" alt="Gallery image 5">
+                        <?php nw_the_media('gallery'); ?>
                     </div>
                     <p class="gallery-scroll-hint" aria-hidden="true">Swipe for more<span>→</span></p>
                 </section>
